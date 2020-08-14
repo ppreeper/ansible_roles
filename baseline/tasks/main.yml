@@ -1,0 +1,24 @@
+---
+- name: update
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+
+- name: pre-requisites for adding repos
+  apt:
+    name:
+      - sudo
+      - gnupg2
+      - curl
+      - wget
+      - apt-utils
+      - git
+    state: present
+- name: file utils
+  apt:
+    name:
+      - mc
+      - fdupes
+      - tree
+      - rename
+    state: present

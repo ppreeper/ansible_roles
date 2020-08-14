@@ -4,14 +4,8 @@
     update_cache: yes
     force_apt_get: yes
 
-- name: pre-requisites for adding repos
-  apt:
-    name:
-      - sudo
-      - gnupg2
-      - curl
-      - apt-utils
-    state: present
+- import_role:
+    name: baseline
 
 #python
 - import_role:

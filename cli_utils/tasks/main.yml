@@ -4,12 +4,12 @@
     update_cache: yes
     force_apt_get: yes
 
+- import_role:
+    name: server_basics
 # base utils
 - name: downloaders
   apt:
     name:
-      - curl
-      - wget
       - aria2
       - netcat
       - pv
@@ -17,10 +17,6 @@
 - name: file utils
   apt:
     name:
-      - mc
-      - fdupes
-      - tree
-      - rename
       - gddrescue
     state: present
 - name: compression
@@ -44,15 +40,4 @@
       - nmon
       - tmux
       - screenfetch
-    state: present
-- name: remote file systems
-  apt:
-    name:
-      - rsync
-      - curlftpfs
-      - sshfs
-      - nfs-common
-      - samba
-      - cifs-utils
-      - krb5-user
     state: present
