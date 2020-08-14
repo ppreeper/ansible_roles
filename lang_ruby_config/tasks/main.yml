@@ -1,0 +1,17 @@
+---
+- name: cfg 20_ruby
+  template:
+    src: "cfg/20_ruby.cfg"
+    dest: "{{ config }}/cfg/20_ruby.cfg"
+    mode: "0640"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: cfg gemrc
+  template:
+    src: "cfg/gemrc"
+    dest: "{{ home }}/.gemrc"
+    mode: "0640"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+
