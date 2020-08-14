@@ -1,0 +1,21 @@
+---
+- name: brave repo key
+  apt_key:
+    url: "https://brave-browser-apt-release.s3.brave.com/brave-core.asc"
+    state: present
+- name: brave repository stat
+  stat:
+    path: "/etc/apt/sources.list.d/brave.list"
+  register: stat_result
+- name: brave repository remove
+  file:
+    path: "/etc/apt/sources.list.d/brave-browser-release.list"
+    state: absent
+  when: stat_result.stat.exists
+- name: brave repository add
+  apt_repository:
+    validate_certs: no
+    repo: "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+    state: present
+    filename: brave-browser-release
+    update_cache: yes

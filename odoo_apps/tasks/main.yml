@@ -1,0 +1,10 @@
+---
+- name: artg_theme_backend
+  git:
+    repo: "https://gitlab.arthomson.com/peterp/artg_theme_backend"
+    dest: "{{ home }}/addons/artg_theme_backend"
+- name: mtr
+  git:
+    repo: "https://gitlab.arthomson.com/peterp/mtr"
+    dest: "{{ home }}/addons/mtr"
+

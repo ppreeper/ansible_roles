@@ -1,0 +1,7 @@
+---
+- import_role:
+    name: db_postgresql_repo
+- name: postgresql-client
+  apt:
+    name:
+      - "postgresql-client-{{ POSTGRES_VERSION }}"

@@ -1,0 +1,21 @@
+---
+- name: update
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+- import_role:
+    name: lang_go
+# cfg go
+- name: cfg 20_go
+  template:
+    src: "cfg/20_go.cfg"
+    dest: "{{ config }}/cfg/20_go.cfg"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+# install gopls
+- name: install gopls
+  become: '{{ user }}'
+  environment:
+    - GO111MODULE: "on"
+  shell: "go get golang.org/x/tools/gopls@latest"

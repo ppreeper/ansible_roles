@@ -1,0 +1,38 @@
+---
+- import_role:
+    name: cli_utils
+- name: remote file systems
+  apt:
+    name:
+      - samba
+      - cifs-utils
+      - krb5-user
+      - acl
+      - attr
+      - krb5-config
+      - krb5-user
+      - libpam-krb5
+      - winbind
+      - libpam-winbind
+      - libnss-winbind
+      - smbclient
+    state: latest
+- name: remove winbind
+  replace:
+    path: /etc/nsswitch.conf
+    regexp: '\s+winbind'
+    replace: ''
+- name: passwd winbind
+  replace:
+    backup: yes
+    path: /etc/nsswitch.conf
+    regexp: '^(passwd.*)$'
+    replace: '\1 winbind'
+- name: group winbind
+  replace:
+    backup: yes
+    path: /etc/nsswitch.conf
+    regexp: '^(group.*)$'
+    replace: '\1 winbind'
+- import_role:
+    name: systemd_resolved

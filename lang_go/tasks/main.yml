@@ -1,0 +1,23 @@
+---
+- name: update
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+
+# language support
+# go
+# requirement
+- name: git
+  apt:
+    name: 
+      - git
+    state: present
+# goup installer
+- name: goup
+  template:
+    src: "bin/goup"
+    dest: "/usr/bin/goup"
+    mode: "0755"
+# install go
+- name: install go
+  command: "/usr/bin/goup"

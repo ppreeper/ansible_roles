@@ -1,0 +1,19 @@
+---
+- name: resolved
+  systemd:
+    name: resolved
+    state: stopped
+    enabled: no
+- name: resolv.conf
+  file:
+    path: "/etc/resolv.conf"
+    state: absent
+- name: resolv.conf
+  blockinfile:
+    path: "/etc/resolv.conf"
+    create: yes
+    marker: "# {mark}"
+    block: |
+      nameserver 1.1.1.1
+      domain example.com
+      search example.com

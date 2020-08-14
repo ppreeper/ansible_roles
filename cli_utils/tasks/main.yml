@@ -1,0 +1,58 @@
+---
+- name: update
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+
+# base utils
+- name: downloaders
+  apt:
+    name:
+      - curl
+      - wget
+      - aria2
+      - netcat
+      - pv
+    state: present
+- name: file utils
+  apt:
+    name:
+      - mc
+      - fdupes
+      - tree
+      - rename
+      - gddrescue
+    state: present
+- name: compression
+  apt:
+    name:
+      - lzop
+      - pigz
+      - unrar
+      - cabextract
+      - upx-ucl
+    state: present
+- name: mail utils
+  apt:
+    name:
+      - swaks
+    state: present
+- name: monitoring
+  apt:
+    name:
+      - htop
+      - nmon
+      - tmux
+      - screenfetch
+    state: present
+- name: remote file systems
+  apt:
+    name:
+      - rsync
+      - curlftpfs
+      - sshfs
+      - nfs-common
+      - samba
+      - cifs-utils
+      - krb5-user
+    state: present

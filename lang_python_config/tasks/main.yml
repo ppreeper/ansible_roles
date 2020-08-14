@@ -1,0 +1,19 @@
+---
+- import_role:
+    name: lang_python
+# cfg python
+- name: cfg 20_python
+  template:
+    src: "cfg/20_python.cfg"
+    dest: "{{ config }}/cfg/20_python.cfg"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: pip addons
+  pip:
+    executable: pip3
+    name:
+      - python-language-server[all]
+    state: present
+

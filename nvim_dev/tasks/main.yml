@@ -1,0 +1,66 @@
+---
+- import_role:
+    name: nvim
+
+- name: update
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+
+# neovim config
+- name: nvim init.vim
+  template:
+    src: "nvim/init.vim"
+    dest: "{{ config }}/nvim/init.vim"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: nvim coc.vim
+  template:
+    src: "nvim/coc.vim"
+    dest: "{{ config }}/nvim/coc.vim"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: nvim coc settings
+  template:
+    src: "nvim/coc-settings.json"
+    dest: "{{ config }}/nvim/coc-settings.json"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+# coc snippets
+- name: coc snippets dir
+  file:
+    path: "{{ config }}/coc/ultisnips/"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: coc snippets asciidoc
+  template:
+    src: "coc/ultisnips/asciidoc.snippets"
+    dest: "{{ config }}/coc/ultisnips/"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: coc snippets javascript
+  template:
+    src: "coc/ultisnips/javascript.snippets"
+    dest: "{{ config }}/coc/ultisnips/"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: coc snippets python
+  template:
+    src: "coc/ultisnips/python.snippets"
+    dest: "{{ config }}/coc/ultisnips/"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: coc snippets xml
+  template:
+    src: "coc/ultisnips/xml.snippets"
+    dest: "{{ config }}/coc/ultisnips/"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"

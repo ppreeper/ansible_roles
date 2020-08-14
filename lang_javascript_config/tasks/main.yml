@@ -1,0 +1,18 @@
+---
+- import_role:
+    name: lang_javascript
+- name: cfg 20_js
+  template:
+    src: "cfg/20_js.cfg"
+    dest: "{{ config }}/cfg/20_js.cfg"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: npmrc
+  template:
+    src: npmrc
+    dest: "{{ home }}/.npmrc"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+

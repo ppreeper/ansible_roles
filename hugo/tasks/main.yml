@@ -1,0 +1,16 @@
+---
+- name: git
+  apt:
+    name:
+      - git
+    state: present
+- name: hugoup
+  template:
+    src: "bin/hugoup"
+    dest: "{{ home }}/bin/hugoup"
+- name: hugoup chown
+  file:
+    path: "{{ home }}/bin/hugoup"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0755"

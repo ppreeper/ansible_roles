@@ -1,0 +1,43 @@
+---
+- name: docker.io
+  apt:
+    name:
+    - docker.io
+    state: present
+- name: add existing user "{{ user }}" to group docker
+  user:
+    name: "{{ user }}"
+    groups: 
+      - docker
+    append: yes
+- name: docker-compose
+  pip:
+    executable: pip3
+    name:
+      - docker-compose
+    state: present
+- name: lxd
+  snap:
+    name: lxd
+    state: present
+- name: add existing user "{{ user }}" to group lxd
+  user:
+    name: "{{ user }}"
+    groups: 
+      - lxd
+    append: yes
+- name: container cli helpers
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - { src: "bin/dockreset", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/genregcred", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/getkube", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/mkfullreset", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/up-helm", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/up-kubectl", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/up-minikube", dest: "{{ home }}/bin/", mode: "0755" }

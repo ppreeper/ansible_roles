@@ -1,0 +1,69 @@
+---
+- import_role:
+    name: userhome
+
+- name: update
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+
+# pre-req
+- name: git
+  apt:
+    name:
+      - git
+    state: present
+# neovim setup
+- name: vim purge
+  apt:
+    name:
+      - vim
+    state: absent
+- name: neovim install
+  apt:
+    name:
+      - vim
+      - neovim
+    state: latest
+# neovim config
+- name: add nvim dir
+  file:
+    path: "{{ config }}/nvim"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: nvim init.vim
+  template:
+    src: "nvim/init.vim"
+    dest: "{{ config }}/nvim/init.vim"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: nvim plugins.vim
+  template:
+    src: "nvim/plugins.vim"
+    dest: "{{ config }}/nvim/plugins.vim"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: nvim basic.vim
+  template:
+    src: "nvim/basic.vim"
+    dest: "{{ config }}/nvim/basic.vim"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: nvim keycommands.vim
+  template:
+    src: "nvim/keycommands.vim"
+    dest: "{{ config }}/nvim/keycommands.vim"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: nvim statusline.vim
+  template:
+    src: "nvim/statusline.vim"
+    dest: "{{ config }}/nvim/statusline.vim"
+    mode: "0644"
+    owner: "{{ user }}"
+    group: "{{ user }}"

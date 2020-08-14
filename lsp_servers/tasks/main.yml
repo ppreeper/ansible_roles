@@ -1,0 +1,13 @@
+---
+# lsp servers
+- name: npm sass
+  npm:
+    name: sass
+    global: yes
+    state: present
+- name: npm bash-language-server
+  npm:
+    name: bash-language-server
+    global: yes
+    state: present
+
