@@ -11,31 +11,36 @@
       - graphviz
     state: present
 - name: asciidoctor-pdf
+  become_user: "{{ user }}"
   gem:
     name: asciidoctor-pdf
     state: latest
     pre_release: yes
     user_install: yes
 - name: asciidoctor
+  become_user: "{{ user }}"
   gem:
     name: asciidoctor
     state: latest
-    user_install: yes
+    #user_install: yes
 - name: asciidoctor-diagram
+  become_user: "{{ user }}"
   gem:
     name: asciidoctor-diagram
     state: latest
-    user_install: yes
+    #user_install: yes
 - name: asciidoctor-rouge
+  become_user: "{{ user }}"
   gem:
     name: asciidoctor-rouge
     state: latest
-    user_install: yes
+    #user_install: yes
 - name: rouge
+  become_user: "{{ user }}"
   gem:
     name: rouge
     state: latest
-    user_install: yes
+    #user_install: yes
 - name: coc snippets asciidoc
   template:
     src: "coc/ultisnips/asciidoc.snippets"
