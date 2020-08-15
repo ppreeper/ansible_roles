@@ -9,6 +9,7 @@
     name:
       - e2fsprogs
       - xfsprogs
+      - btrfs-progs
       - zfsutils-linux
       - ntfs-3g
     state: latest
