@@ -1,0 +1,10 @@
+---
+- name: artg_theme_backend
+  command: odoo -c /etc/odoo/odoo.conf --no-http --stop-after-init --without-demo=all -i artg_theme_backend
+  become: yes
+  become_user: "{{ user }}"
+- name: mtr
+  command: odoo -c /etc/odoo/odoo.conf --no-http --stop-after-init --without-demo=all -i mtr
+  become: yes
+  become_user: "{{ user }}"
+
