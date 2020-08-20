@@ -1,0 +1,21 @@
+---
+- name: element repo key
+  apt_key:
+    url: "https://packages.riot.im/debian/riot-im-archive-keyring.gpg"
+    state: present
+- name: element repository stat
+  stat:
+    path: "/etc/apt/sources.list.d/element.list"
+  register: stat_result
+- name: element repository remove
+  file:
+    path: "/etc/apt/sources.list.d/element.list"
+    state: absent
+  when: stat_result.stat.exists
+- name: element repository add
+  apt_repository:
+    validate_certs: no
+    repo: "deb [arch=amd64] https://packages.riot.im/debian/ default main"
+    state: present
+    filename: element
+    update_cache: yes
