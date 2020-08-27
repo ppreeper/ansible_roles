@@ -69,7 +69,8 @@ noremap <F3> :call CocAction('format')<CR>
 " Add :Snipped command to edit snippets
 command! -nargs=0 Snipped :CocCommand snippets.editSnippets
 
-" coc-go key commands
+" coc-go
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 " add tags to structs
 autocmd FileType go nmap gtd :CocCommand go.tags.add db<cr>
 autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
