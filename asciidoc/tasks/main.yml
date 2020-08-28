@@ -59,5 +59,32 @@
     - { src: "bin/adoc2pdf", dest: "{{ home }}/bin/", mode: "0755" }
     - { src: "bin/adoc2pdfwatch", dest: "{{ home }}/bin/", mode: "0755" }
     - { src: "bin/asciidocup", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/nerdfonts", dest: "{{ home }}/bin/", mode: "0755" }
     - { src: "bin/talk2pdf", dest: "{{ home }}/bin/", mode: "0755" }
     - { src: "bin/talksched2pdf", dest: "{{ home }}/bin/", mode: "0755" }
+- name: install fonts
+  command: "{{ home }}/bin/nerdfonts"
+  become_user: "{{ user }}"
+- name: config files
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - {
+        src: "config/themes/basic-theme.yml",
+        dest: "{{ local }}/asciidoc/themes/",
+        mode: "0640",
+      }
+    - {
+        src: "config/themes/policy-theme.yml",
+        dest: "{{ local }}/asciidoc/themes/",
+        mode: "0640",
+      }
+    - {
+        src: "config/themes/talk-theme.yml",
+        dest: "{{ local }}/asciidoc/themes/",
+        mode: "0640",
+      }
