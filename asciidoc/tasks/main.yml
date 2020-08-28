@@ -65,6 +65,44 @@
 - name: install fonts
   command: "{{ home }}/bin/nerdfonts"
   become_user: "{{ user }}"
+- name: pdf fonts
+  get_url:
+    url: "{{ item.src }}"
+    dest: "{{ home }}/.fonts"
+    mode: 0640
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/mplus1mn-bold-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/mplus1mn-bold_italic-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/mplus1mn-italic-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/mplus1mn-regular-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/mplus1p-regular-fallback.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/notoserif-bold-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/notoserif-bold_italic-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/notoserif-italic-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/notoserif-regular-subset.ttf",
+      }
+    - {
+        src: "https://github.com/asciidoctor/asciidoctor-pdf/raw/master/data/fonts/notoemoji-subset.ttf",
+      }
 - name: config files
   template:
     src: "{{ item.src }}"
