@@ -11,8 +11,8 @@
     block: |
       [global]
       security = ADS
-      workgroup = EXAMPLE
-      realm = EXAMPLE.COM
+      workgroup = {{ addomain }}
+      realm = {{ adrealm }}
       encrypt passwords = yes
       log file = /var/log/samba/%m.log
       log level = 1
