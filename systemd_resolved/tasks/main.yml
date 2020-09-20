@@ -1,9 +1,10 @@
 ---
 - name: resolved
   systemd:
-    name: resolved
+    name: systemd-resolved
     state: stopped
     enabled: no
+    force: yes
 - name: resolv.conf
   file:
     path: "/etc/resolv.conf"
@@ -15,5 +16,5 @@
     marker: "# {mark}"
     block: |
       nameserver 1.1.1.1
-      domain example.com
-      search example.com
+      domain {{ domain }}
+      search {{ domain }}
