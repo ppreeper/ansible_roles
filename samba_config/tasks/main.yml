@@ -11,8 +11,8 @@
     block: |
       [global]
       security = ADS
-      workgroup = {{ addomain }}
-      realm = {{ adrealm }}
+      workgroup = {{ ntdomain }}
+      realm = {{ realm }}
       encrypt passwords = yes
       log file = /var/log/samba/%m.log
       log level = 1
@@ -28,8 +28,8 @@
       create mask = 0775
       idmap config * : backend = tdb
       idmap config * : range = 3000-7999
-      idmap config ARTHOMSON : backend = rid
-      idmap config ARTHOMSON : range 10000001-20000000
+      idmap config {{ ntdomain }} : backend = rid
+      idmap config {{ ntdomain }} : range 10000001-20000000
       ;[share]
       ;path = /share
       ;read only = no
