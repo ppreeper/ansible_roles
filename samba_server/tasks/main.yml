@@ -1,6 +1,4 @@
 ---
-- import_role:
-    name: cli_utils
 - name: remote file systems
   apt:
     name:
@@ -21,18 +19,16 @@
   replace:
     path: /etc/nsswitch.conf
     regexp: '\s+winbind'
-    replace: ''
+    replace: ""
 - name: passwd winbind
   replace:
     backup: yes
     path: /etc/nsswitch.conf
-    regexp: '^(passwd.*)$'
+    regexp: "^(passwd.*)$"
     replace: '\1 winbind'
 - name: group winbind
   replace:
     backup: yes
     path: /etc/nsswitch.conf
-    regexp: '^(group.*)$'
+    regexp: "^(group.*)$"
     replace: '\1 winbind'
-- import_role:
-    name: systemd_resolved
