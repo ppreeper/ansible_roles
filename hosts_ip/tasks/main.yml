@@ -1,0 +1,13 @@
+---
+- name: hostname insert
+  replace:
+    backup: yes
+    path: /etc/hosts
+    regexp: "^(127.0.1.1.*)$"
+    replace: "{{ ansible_default_ipv4.address }}    {{ inventory_hostname }}.{{ domain }} {{ inventory_hostname }}"
+- name: hostname insert
+  replace:
+    backup: yes
+    path: /etc/hosts
+    regexp: "^({{ ansible_default_ipv4.address }}.*)$"
+    replace: "{{ ansible_default_ipv4.address }}\t{{ inventory_hostname }}.{{ domain }} {{ inventory_hostname }}"
