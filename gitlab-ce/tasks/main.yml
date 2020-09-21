@@ -1,0 +1,32 @@
+---
+- name: dependencies
+  apt:
+    name:
+      - curl
+      - openssh-server
+      - ca-certificates
+    state: latest
+- name: postfix
+  apt:
+    name:
+      - postfix
+    state: latest
+- name: download install script
+  get_url:
+    url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
+    dest: "{{ home }}/script.deb.sh"
+    mode: 0755
+    group: "{{ user }}"
+    owner: "{{ user }}"
+- name: run install script
+  shell: "{{ home }}/script.deb.sh"
+  become: yes
+  become_user: root
+- name: install gitlab
+  become: yes
+  environment:
+    EXTERNAL_URL: "{{ schema }}://{{ inventory_hostname }}.{{domain}}"
+  apt:
+    name:
+      - gitlab-ce
+    state: latest
