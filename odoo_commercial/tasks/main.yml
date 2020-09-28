@@ -1,0 +1,10 @@
+---
+- name: copy deb file
+  copy:
+    src: "odoo_{{ ODOO_VERSION }}+e.latest_all.deb"
+    dest: "/opt/odoo_{{ ODOO_VERSION }}+e.latest_all.deb"
+- name: odoo install
+  apt:
+    deb: "/opt/odoo_{{ ODOO_VERSION }}+e.latest_all.deb"
+    state: present
+    install_recommends: no
