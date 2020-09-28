@@ -1,0 +1,11 @@
+---
+- name: artg_theme_backend
+  become: yes
+  become_user: "{{ user }}"
+  git:
+    repo: "https://gitlab.arthomson.com/peterp/artg_theme_backend"
+    dest: "{{ home }}/addons/artg_theme_backend"
+- name: artg_theme_backend
+  command: odoo -c /etc/odoo/odoo.conf --no-http --stop-after-init --without-demo=all -i artg_theme_backend
+  become: yes
+  become_user: "{{ user }}"

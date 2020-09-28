@@ -1,0 +1,9 @@
+---
+- name: mtr
+  git:
+    repo: "https://gitlab.arthomson.com/peterp/mtr"
+    dest: "{{ home }}/addons/mtr"
+- name: mtr
+  command: odoo -c /etc/odoo/odoo.conf --no-http --stop-after-init --without-demo=all -i mtr
+  become: yes
+  become_user: "{{ user }}"

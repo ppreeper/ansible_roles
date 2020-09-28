@@ -1,0 +1,11 @@
+---
+- name: addons directory
+  file:
+    path: /opt/addons
+    state: directory
+    group: odoo
+    owner: odoo
+- name: copy odoo config
+  template:
+    src: odoo.conf
+    dest: /etc/odoo/odoo.conf

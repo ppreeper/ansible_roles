@@ -2,9 +2,13 @@
 - name: artg_theme_backend
   git:
     repo: "https://gitlab.arthomson.com/peterp/artg_theme_backend"
-    dest: "{{ home }}/addons/artg_theme_backend"
+    dest: "/opt/addons/artg_theme_backend"
+  become: yes
+  become_user: "{{ user }}"
 - name: mtr
   git:
     repo: "https://gitlab.arthomson.com/peterp/mtr"
-    dest: "{{ home }}/addons/mtr"
+    dest: "/opt/addons/mtr"
+  become: yes
+  become_user: "{{ user }}"
 

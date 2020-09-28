@@ -1,0 +1,5 @@
+---
+- name: auth_ldap
+  command: odoo -c /etc/odoo/odoo.conf --no-http --stop-after-init --without-demo=all -i auth_ldap
+  become: yes
+  become_user: "{{ user }}"
