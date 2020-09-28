@@ -1,0 +1,8 @@
+---
+- import_role:
+    name: odoo_repo
+- name: odoo install
+  apt:
+    name: odoo
+    state: present
+    install_recommends: no
