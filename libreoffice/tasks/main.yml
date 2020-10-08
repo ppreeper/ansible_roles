@@ -1,0 +1,7 @@
+---
+- name: libreoffice
+  apt:
+    name:
+    - libreoffice
+    state: latest
+    update_cache: yes
