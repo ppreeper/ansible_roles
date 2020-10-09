@@ -1,5 +1,5 @@
 ---
 - name: chromium
-  apt:
+  snap:
     name: chromium
     state: present
