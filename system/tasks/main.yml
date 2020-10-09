@@ -3,18 +3,12 @@
   replace:
     path: /etc/nsswitch.conf
     regexp: '\s+\[NOTFOUND=return\]'
-    replace: ''
+    replace: ""
 - name: hosts remove unvavail
   replace:
     path: /etc/nsswitch.conf
     regexp: '\s+\[!UNAVAIL=return\]'
-    replace: ''
-- name: bash
-  apt:
-    name:
-      - bash
-      - bash-completion
-    state: present
+    replace: ""
 - name: git
   apt:
     name:
@@ -26,5 +20,4 @@
       - apt-transport-https
       - pkg-config
       - gnupg2
-      - snapd
     state: present
