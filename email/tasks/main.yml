@@ -9,7 +9,6 @@
     name:
     - evolution
     - evolution-ews
-    - evolution-indicator
     - evolution-plugin-bogofilter
     - evolution-plugin-pstimport
     - evolution-plugin-spamassassin
