@@ -1,10 +1,4 @@
 ---
-- import_role:
-    name: lang_ruby
-- import_role:
-    name: lang_ruby_config
-- import_role:
-    name: lang_java
 - name: graphviz
   apt:
     name:
@@ -17,12 +11,6 @@
     state: latest
     pre_release: yes
     user_install: yes
-- name: asciidoctor
-  become_user: "{{ user }}"
-  gem:
-    name: asciidoctor
-    state: latest
-    #user_install: yes
 - name: asciidoctor-diagram
   become_user: "{{ user }}"
   gem:
@@ -39,6 +27,12 @@
   become_user: "{{ user }}"
   gem:
     name: rouge
+    state: latest
+    #user_install: yes
+- name: asciidoctor
+  become_user: "{{ user }}"
+  gem:
+    name: asciidoctor
     state: latest
     #user_install: yes
 - name: coc snippets asciidoc
