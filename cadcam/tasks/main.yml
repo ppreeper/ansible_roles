@@ -6,8 +6,8 @@
     state: present
 
 - name: freecad
-  snap:
-    name: freecad
+  community.general.flatpak:
+    name: org.freecadweb.FreeCAD
     state: present
 
 - name: dxf2gcode
