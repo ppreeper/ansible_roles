@@ -1,10 +1,10 @@
 ---
-- import_role:
-    name: virtualbox
-
 - name: vagrant
   apt:
-    deb: "https://releases.hashicorp.com/vagrant/{{ VAGRANT_VERSION }}/vagrant_{{ VAGRANT_VERSION }}_x86_64.deb"
+    #deb: "https://releases.hashicorp.com/vagrant/{{ VAGRANT_VERSION }}/vagrant_{{ VAGRANT_VERSION }}_x86_64.deb"
+    name:
+      - vagrant
+      - vagrant-libvirt
     state: present
 - name: vagrant cli helpers
   template:
