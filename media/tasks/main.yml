@@ -1,7 +1,4 @@
 ---
-- import_role:
-    name: lang_javascript
-
 - name: image tools (system)
   apt:
     name:
@@ -22,9 +19,6 @@
     - gstreamer1.0-plugins-bad
     - gstreamer1.0-plugins-ugly
     - libavcodec-extra
-    - libdvdread7
-    - ubuntu-restricted-extras
-    - ubuntu-restricted-addons
 - name: av tools
   apt:
     name:
