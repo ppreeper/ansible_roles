@@ -1,0 +1,6 @@
+---
+- name: fish
+  apt:
+    name:
+    - fish
+    state: present
