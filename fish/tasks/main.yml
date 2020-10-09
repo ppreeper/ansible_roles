@@ -1,4 +1,10 @@
 ---
+- name: add .cfg dir
+  file:
+    path: "{{ config }}/cfg/fish"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
 - name: fish
   apt:
     name:
