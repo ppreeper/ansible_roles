@@ -1,0 +1,22 @@
+---
+- name: network vpn connectors
+  apt:
+    name:
+    - wireguard
+    state: latest
+- name: add config dir
+  file:
+    path: "{{ config }}/wgvpn"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+- name: wireguard cli helpers
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - { src: "bin/wgadd", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "bin/wgdel", dest: "{{ home }}/bin/", mode: "0755" }
