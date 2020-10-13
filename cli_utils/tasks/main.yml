@@ -24,10 +24,24 @@
     name:
       - lzop
       - pigz
-      - unrar
+        #- unrar
       - cabextract
       - upx-ucl
     state: present
+- name: unrar ubuntu
+  apt:
+    name:
+      - unrar
+    state: present
+  when:
+    - ansible_facts['distribution'] == "Ubuntu"
+- name: unrar debian
+  apt:
+    name:
+      - unrar-free
+    state: present
+  when:
+    - ansible_facts['distribution'] == "Debian"
 - name: mail utils
   apt:
     name:
