@@ -13,6 +13,7 @@
       - wget
       - apt-utils
       - git
+      - lsb-release
     state: present
 - name: file utils
   apt:
