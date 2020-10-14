@@ -1,0 +1,21 @@
+---
+- name: virtualbox repo key
+  apt_key:
+    url: "http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc"
+    state: present
+- name: virtualbox repository stat
+  stat:
+    path: "/etc/apt/sources.list.d/virtualbox.list"
+  register: stat_result
+- name: virtualbox repository remove
+  file:
+    path: "/etc/apt/sources.list.d/virtualbox.list"
+    state: absent
+  when: stat_result.stat.exists
+- name: virtualbox repository add
+  apt_repository:
+    validate_certs: no
+    repo: "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian {{ ansible_lsb.codename|lower }} contrib non-free"
+    state: present
+    filename: virtualbox
+    update_cache: yes
