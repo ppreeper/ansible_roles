@@ -24,6 +24,9 @@
       - proxmox-ve
       - postfix
       - open-iscsi
+      - ovmf
+      - openvswitch-switch
+      - zfsutils-linux
     state: present
 - name: remove os-prober
   apt:
