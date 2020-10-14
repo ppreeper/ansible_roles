@@ -33,15 +33,13 @@
     name:
       - unrar
     state: present
-  when:
-    - ansible_facts['distribution'] == "Ubuntu"
+  when: ansible_distribution == "Ubuntu"
 - name: unrar debian
   apt:
     name:
       - unrar-free
     state: present
-  when:
-    - ansible_facts['distribution'] == "Debian"
+  when: ansible_distribution == "Debian"
 - name: mail utils
   apt:
     name:
