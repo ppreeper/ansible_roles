@@ -1,0 +1,31 @@
+---
+- name: update
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+- name: mailcatcher pre-reqs
+  apt:
+    name:
+      - build-essential
+      - ruby
+      - ruby-dev
+      - libssl-dev
+      - libsqlite3-dev
+    state: present
+- name: mailcatcher
+  become: yes
+  community.general.gem:
+    name: mailcatcher
+    state: present
+    user_install: no
+- name: mailcatcher.service file
+  template:
+    src: "mailcatcher.service"
+    dest: "/lib/systemd/system/"
+    mode: "0644"
+- name: enable mailcatcher.service
+  systemd:
+    name: mailcatcher
+    enabled: yes
+    daemon_reload: yes
+    state: started
