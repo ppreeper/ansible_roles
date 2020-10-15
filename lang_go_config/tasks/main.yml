@@ -15,7 +15,7 @@
     group: "{{ user }}"
 # install gopls
 - name: install gopls
-  become: '{{ user }}'
+  become_user: '{{ user }}'
   environment:
     - GO111MODULE: "on"
   shell: "go get golang.org/x/tools/gopls@latest"
