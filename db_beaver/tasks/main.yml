@@ -3,4 +3,3 @@
   community.general.flatpak:
     name: io.dbeaver.DBeaverCommunity
     state: present
-    method: user

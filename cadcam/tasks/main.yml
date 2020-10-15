@@ -9,7 +9,6 @@
   community.general.flatpak:
     name: org.freecadweb.FreeCAD
     state: present
-    method: user
 
 - name: dxf2gcode
   apt:
