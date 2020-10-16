@@ -1,14 +1,6 @@
 ---
-# install flatpak
-- name: install flatpak
+- name: install snapd
   apt:
     name:
-      - flatpak
+      - snapd
     state: present
-# install flathub repo
-- name: install flathub repo
-  flatpak_remote:
-    name: flathub
-    state: present
-    flatpakrepo_url: "https://flathub.org/repo/flathub.flatpakrepo"
-    method: user
