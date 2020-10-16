@@ -2,4 +2,4 @@
 - name: zoom client
   community.general.flatpak:
     name: us.zoom.Zoom
-    state: latest
+    state: present
