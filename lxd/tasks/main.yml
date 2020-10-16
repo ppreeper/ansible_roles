@@ -1,0 +1,11 @@
+---
+- name: lxd
+  snap:
+    name: lxd
+    state: present
+- name: add existing user "{{ user }}" to group lxd
+  user:
+    name: "{{ user }}"
+    groups: 
+      - lxd
+    append: yes
