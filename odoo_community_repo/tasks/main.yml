@@ -1,7 +1,7 @@
 ---
 - name: odoo repo key
   apt_key:
-    url: 'https://nightly.odoo.com/odoo.key'
+    url: "https://nightly.odoo.com/odoo.key"
     state: present
 - name: odoo repository stat
   stat:
@@ -15,7 +15,7 @@
 - name: odoo repository add
   apt_repository:
     validate_certs: no
-    repo: 'deb [arch=amd64] http://nightly.odoo.com/{{ ODOO_VERSION }}/nightly/deb/ ./'
+    repo: "deb [arch=amd64] http://nightly.odoo.com/{{ ODOO_VERSION }}/nightly/deb/ ./"
     state: present
     filename: odoo
     update_cache: yes

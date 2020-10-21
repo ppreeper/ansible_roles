@@ -1,0 +1,10 @@
+---
+- name: odoo source
+  git:
+    repo: "https://github.com/odoo/odoo"
+    dest: "/var/lib/odoo"
+    version: "{{ ODOO_VERSION }}"
+    depth: 1
+- name: pip install
+  pip:
+    requirements: "/var/lib/odoo/requirements.txt"

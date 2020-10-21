@@ -39,7 +39,7 @@
     state: present
 
 # dependencies
-- name: Install some deps, and wkhtmltopdf
+- name: Install some deps
   apt:
     name:
       - bzip2
@@ -61,6 +61,10 @@
       - ssl-cert
       - xdg-user-dirs
       - xz-utils
+      - libldap2-dev
+      - libxml2-dev
+      - libxslt-dev
+      - libsasl2-dev
     state: present
 
 - import_role:

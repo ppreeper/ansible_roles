@@ -1,0 +1,9 @@
+---
+home: "{{lookup('env', 'HOME')}}"
+config: "{{lookup('env', 'HOME')}}/.config"
+local: "{{lookup('env', 'HOME')}}/.local"
+user: "{{lookup('env', 'USER')}}"
+mods:
+  - base
+  - l10n_ca
+  - auth_ldap

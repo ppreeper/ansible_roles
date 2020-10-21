@@ -5,3 +5,4 @@
     name: odoo
     password: odoo
     state: present
+    role_attr_flags: "CREATEDB"

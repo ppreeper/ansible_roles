@@ -3,8 +3,14 @@
   file:
     path: /opt/addons
     state: directory
-    group: odoo
-    owner: odoo
+    group: "{{ user }}"
+    owner: "{{ user }}"
+- name: config directory
+  file:
+    path: /etc/odoo
+    state: directory
+    group: "{{ user }}"
+    owner: "{{ user }}"
 - name: copy odoo config
   template:
     src: odoo.conf
