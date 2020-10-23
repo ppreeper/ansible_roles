@@ -2,12 +2,12 @@
 - name: create {{ user }} group
   group:
     name: "{{ user }}"
-    gid: 114
+    #gid: 114
     state: present
 - name: create {{ user }} user
   user:
     name: "{{ user }}"
-    uid: 107
+    #uid: 107
     groups:
       - "{{ user }}"
       - sudo
