@@ -1,0 +1,28 @@
+---
+# nextcloud-client
+- name: nextcloud-client repository stat
+  stat:
+    path: "/etc/apt/sources.list.d/nextcloud-client.list"
+  register: stat_result
+- name: nextcloud-client repo remove
+  file:
+    path: "/etc/apt/sources.list.d/nextcloud-client.list"
+    state: absent
+  when: stat_result.stat.exists
+- name: nextcloud desktop client repo add
+  apt_repository:
+    validate_certs: no
+    repo: "ppa:nextcloud-devs/client"
+    filename: nextcloud-client
+    state: present
+- name: nextcloud repo amd64
+  replace:
+    path: "/etc/apt/sources.list.d/nextcloud-client.list"
+    regexp: 'deb[ \t].*http'
+    replace: 'deb [arch=amd64] http'
+- name: nextcloud desktop client
+  apt:
+    name:
+      - nextcloud-client
+    state: latest
+    update_cache: yes

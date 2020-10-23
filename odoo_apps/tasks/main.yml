@@ -1,14 +1,28 @@
 ---
+- import_role:
+    name: baseline
+- import_role:
+    name: odoo_user
+- import_role:
+    name: odoo_config
 - name: artg_theme_backend
   git:
     repo: "https://gitlab.arthomson.com/peterp/artg_theme_backend"
     dest: "/opt/addons/artg_theme_backend"
+    version: master
   become: yes
   become_user: "{{ user }}"
+  become_method: su
 - name: mtr
   git:
     repo: "https://gitlab.arthomson.com/peterp/mtr"
     dest: "/opt/addons/mtr"
+    version: master
   become: yes
   become_user: "{{ user }}"
-
+- name: change ownership
+  file:
+    path: "/opt/addons"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    recurse: yes

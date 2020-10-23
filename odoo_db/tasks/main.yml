@@ -1,4 +1,10 @@
 ---
+- import_role:
+    name: db_postgresql_repo
+- import_role:
+    name: db_postgresql_server
+- import_role:
+    name: odoo_user
 - name: update odoo db role
   become_user: postgres
   postgresql_user:

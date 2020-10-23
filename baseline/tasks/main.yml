@@ -1,10 +1,5 @@
 ---
-- name: update
-  apt:
-    update_cache: yes
-    force_apt_get: yes
-
-- name: pre-requisites for adding repos
+- name: repository tools
   apt:
     name:
       - sudo
@@ -12,14 +7,9 @@
       - curl
       - wget
       - apt-utils
+      - apt-transport-https
       - git
       - lsb-release
     state: present
-- name: file utils
-  apt:
-    name:
-      - mc
-      - fdupes
-      - tree
-      - rename
-    state: present
+    update_cache: yes
+    cache_valid_time: 3600

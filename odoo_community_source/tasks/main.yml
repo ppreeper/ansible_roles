@@ -1,10 +1,37 @@
 ---
-- name: odoo source
-  git:
-    repo: "https://github.com/odoo/odoo"
-    dest: "/var/lib/odoo"
-    version: "{{ ODOO_VERSION }}"
-    depth: 1
-- name: pip install
-  pip:
-    requirements: "/var/lib/odoo/requirements.txt"
+- name: install unzip
+  apt:
+    name:
+      - unzip
+    state: present
+- name: create src dir
+  file:
+    dest: /opt/src
+    state: directory
+- name: create odoo dir
+  file:
+    dest: /var/lib/odoo
+    state: directory
+- name: download odoo source
+  get_url:
+    url: "https://github.com/odoo/odoo/archive/{{ ODOO_VERSION }}.zip"
+    dest: "/opt/odoo-{{ ODOO_VERSION }}.zip"
+    mode: 0644
+- name: extract source
+  unarchive:
+    src: "/opt/odoo-{{ ODOO_VERSION }}.zip"
+    dest: /opt/src
+    remote_src: yes
+- name: copy odoo src
+  copy:
+    src: "/opt/src/odoo-{{ ODOO_VERSION }}/"
+    dest: /var/lib/odoo
+    remote_src: yes
+- name: remove odoo src archive
+  file:
+    path: "/opt/odoo-{{ ODOO_VERSION }}.zip"
+    state: absent
+- name: remove odoo src dir
+  file:
+    path: "/opt/src/odoo-{{ ODOO_VERSION }}/"
+    state: absent

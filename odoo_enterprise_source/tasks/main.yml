@@ -1,0 +1,35 @@
+---
+- name: copy archive
+  copy:
+    src: "odoo_{{ ODOO_VERSION }}+e.latest.tar.gz"
+    dest: "/opt/odoo_{{ ODOO_VERSION }}+e.latest.tar.gz"
+- name: extract source
+  unarchive:
+    src: "/opt/odoo_{{ ODOO_VERSION }}+e.latest.tar.gz"
+    dest: /opt/src
+    remote_src: yes
+- name: stat folder
+  shell: ls -d /opt/src/odoo*
+  register: sym
+- name: out folder
+  debug:
+    msg: "{{ sym.stdout }}"
+- name: copy odoo src
+  copy:
+    src: "{{sym.stdout}}/odoo/addons"
+    dest: /opt/enterprise
+    remote_src: yes
+- name: remove odoo src archive
+  file:
+    path: "/opt/odoo_{{ ODOO_VERSION }}+e.latest.tar.gz"
+    state: absent
+- name: remove odoo src dir
+  file:
+    path: "{{sym.stdout}}/"
+    state: absent
+- name: change ownership
+  file:
+    path: /opt/enterprise
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    recurse: yes

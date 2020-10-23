@@ -5,3 +5,4 @@
   apt:
     name:
       - "postgresql-client-{{ POSTGRES_VERSION }}"
+    state: present

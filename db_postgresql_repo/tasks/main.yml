@@ -1,4 +1,6 @@
 ---
+- import_role:
+    name: baseline
 - name: postgresql repo key
   apt_key:
     url: "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
@@ -7,11 +9,6 @@
   stat:
     path: "/etc/apt/sources.list.d/postgres.list"
   register: stat_result
-- name: postgres repository remove
-  file:
-    path: "/etc/apt/sources.list.d/postgres.list"
-    state: absent
-  when: stat_result.stat.exists
 - name: postgres repository add
   apt_repository:
     validate_certs: no

@@ -1,0 +1,32 @@
+---
+- name: repository tools
+  apt:
+    name:
+      - sudo
+      - gnupg2
+      - curl
+      - wget
+      - apt-utils
+      - git
+      - lsb-release
+    state: present
+- name: unifi repo key
+  apt_key:
+    url: "https://dl.ui.com/unifi/unifi-repo.gpg"
+    state: present
+- name: unifi repository stat
+  stat:
+    path: "/etc/apt/sources.list.d/unifi.list"
+  register: stat_result
+- name: unifi repository add
+  apt_repository:
+    validate_certs: no
+    repo: "deb https://www.ui.com/downloads/unifi/debian stable ubiquiti"
+    state: present
+    filename: unifi
+    update_cache: yes
+- name: install unifi controller
+  apt:
+    name:
+      - unifi
+    state: present

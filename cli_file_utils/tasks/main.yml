@@ -1,0 +1,9 @@
+---
+- name: file utils
+  apt:
+    name:
+      - mc
+      - fdupes
+      - tree
+      - rename
+    state: present

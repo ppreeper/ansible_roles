@@ -2,5 +2,5 @@
 - name: sqlite3
   apt:
     name:
-    - sqlite3
+      - sqlite3
     state: present
