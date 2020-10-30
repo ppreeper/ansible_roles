@@ -1,0 +1,4 @@
+---
+- name: debugout
+  debug:
+    var: ansible_facts

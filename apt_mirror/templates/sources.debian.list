@@ -1,0 +1,4 @@
+deb [arch=amd64] http://mirror.arthomson.com/debian {{ansible_distribution_release}} main contrib non-free
+deb [arch=amd64] http://mirror.arthomson.com/debian {{ansible_distribution_release}}-updates main contrib non-free
+deb [arch=amd64] http://mirror.arthomson.com/debian {{ansible_distribution_release}}-backports main contrib non-free
+deb [arch=amd64] http://mirror.arthomson.com/debian-security {{ansible_distribution_release}}/updates main contrib non-free
