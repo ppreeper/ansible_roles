@@ -7,6 +7,6 @@
         update_cache: true
         cache_valid_time: 3600
       when: ansible_os_family == 'Debian'
-    - name: virtualization
+    - name: kvm
       include_role:
-        name: virtualization
+        name: kvm
