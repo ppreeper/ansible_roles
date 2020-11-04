@@ -2,12 +2,12 @@
 - name: docker.io
   apt:
     name:
-    - docker.io
+      - docker.io
     state: present
 - name: add existing user "{{ user }}" to group docker
   user:
     name: "{{ user }}"
-    groups: 
+    groups:
       - docker
     append: yes
 - name: docker-compose

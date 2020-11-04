@@ -2,10 +2,10 @@
 - name: remmina
   apt:
     name:
-    - remmina
-    - remmina-plugin-rdp
-    - remmina-plugin-vnc
-    - remmina-plugin-spice
+      - remmina
+      - remmina-plugin-rdp
+      - remmina-plugin-vnc
+      - remmina-plugin-spice
     state: present
 - name: teamviewer
   apt:

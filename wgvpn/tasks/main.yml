@@ -2,7 +2,7 @@
 - name: network vpn connectors
   apt:
     name:
-    - wireguard
+      - wireguard
     state: latest
 - name: add config dir
   file:

@@ -3,3 +3,9 @@
   apt:
     name: chromium
     state: present
+  when: ansible_distribution != 'Ubuntu'
+- name: chromium snap
+  snap:
+    name: chromium
+    state: present
+  when: ansible_distribution == 'Ubuntu'

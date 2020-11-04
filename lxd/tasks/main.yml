@@ -6,6 +6,6 @@
 - name: add existing user "{{ user }}" to group lxd
   user:
     name: "{{ user }}"
-    groups: 
+    groups:
       - lxd
     append: yes

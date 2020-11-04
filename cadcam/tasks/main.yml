@@ -2,7 +2,7 @@
 - name: librecad
   apt:
     name:
-    - librecad
+      - librecad
     state: present
 
 - name: freecad
@@ -13,5 +13,5 @@
 - name: dxf2gcode
   apt:
     name:
-    - dxf2gcode
+      - dxf2gcode
     state: present

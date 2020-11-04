@@ -23,5 +23,5 @@
 - name: syncthing
   apt:
     name:
-    - syncthing
+      - syncthing
     state: latest

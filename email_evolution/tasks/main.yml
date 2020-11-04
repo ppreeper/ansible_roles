@@ -7,10 +7,10 @@
 - name: evolution groupware client
   apt:
     name:
-    - evolution
-    - evolution-ews
-    - evolution-plugin-bogofilter
-    - evolution-plugin-pstimport
-    - evolution-plugin-spamassassin
-    - evolution-plugins
+      - evolution
+      - evolution-ews
+      - evolution-plugin-bogofilter
+      - evolution-plugin-pstimport
+      - evolution-plugin-spamassassin
+      - evolution-plugins
     state: present

@@ -19,7 +19,7 @@
   replace:
     path: "/etc/apt/sources.list.d/nextcloud-client.list"
     regexp: 'deb[ \t].*http'
-    replace: 'deb [arch=amd64] http'
+    replace: "deb [arch=amd64] http"
 - name: nextcloud desktop client
   apt:
     name:

@@ -2,9 +2,9 @@
 - name: image tools (system)
   apt:
     name:
-    - jpegoptim
-    - pngquant
-    - gifsicle
+      - jpegoptim
+      - pngquant
+      - gifsicle
     state: latest
 - name: image tools (npm)
   npm:
@@ -14,28 +14,28 @@
 - name: av codec lib
   apt:
     name:
-    - gstreamer1.0-libav
-    - gstreamer1.0-plugins-good
-    - gstreamer1.0-plugins-bad
-    - gstreamer1.0-plugins-ugly
-    - libavcodec-extra
+      - gstreamer1.0-libav
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-plugins-bad
+      - gstreamer1.0-plugins-ugly
+      - libavcodec-extra
 - name: av tools
   apt:
     name:
-    - ffmpeg
-    - oggz-tools
-    - ogmtools
-    - opus-tools
-    - vorbis-tools
-    - flac
-    - mkvtoolnix
-    - vpx-tools
-    - cuetools
-    - shntool
-    - sox
-    - dvdbackup
-    - vobcopy
-    - mediainfo
+      - ffmpeg
+      - oggz-tools
+      - ogmtools
+      - opus-tools
+      - vorbis-tools
+      - flac
+      - mkvtoolnix
+      - vpx-tools
+      - cuetools
+      - shntool
+      - sox
+      - dvdbackup
+      - vobcopy
+      - mediainfo
     state: present
 - name: av cli helpers
   template:
@@ -61,10 +61,22 @@
     - { src: "bin/iso2vob", dest: "{{ home  }}/bin/", mode: "0755" }
     - { src: "bin/mp42mp4", dest: "{{ home  }}/bin/", mode: "0755" }
     - { src: "bin/rip2vob", dest: "{{ home  }}/bin/", mode: "0755" }
-    - { src: "bin/sox-blueboxtone-generator.sh", dest: "{{ home  }}/bin/", mode: "0755" }
+    - {
+        src: "bin/sox-blueboxtone-generator.sh",
+        dest: "{{ home  }}/bin/",
+        mode: "0755",
+      }
     - { src: "bin/sox-pinknoise.sh", dest: "{{ home  }}/bin/", mode: "0755" }
-    - { src: "bin/sox-startrekenginewhitenoise.sh", dest: "{{ home  }}/bin/", mode: "0755" }
-    - { src: "bin/sox-touchtone-generator.sh", dest: "{{ home  }}/bin/", mode: "0755" }
+    - {
+        src: "bin/sox-startrekenginewhitenoise.sh",
+        dest: "{{ home  }}/bin/",
+        mode: "0755",
+      }
+    - {
+        src: "bin/sox-touchtone-generator.sh",
+        dest: "{{ home  }}/bin/",
+        mode: "0755",
+      }
     - { src: "bin/sox-wavesonbeach.sh", dest: "{{ home  }}/bin/", mode: "0755" }
     - { src: "bin/sox-whitenoise.sh", dest: "{{ home  }}/bin/", mode: "0755" }
     - { src: "bin/toopus", dest: "{{ home  }}/bin/", mode: "0755" }
