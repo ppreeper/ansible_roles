@@ -1,0 +1,6 @@
+---
+- name: terminator terminal emulator
+  apt:
+    name:
+      - terminator
+    state: present
