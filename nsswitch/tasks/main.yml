@@ -9,15 +9,3 @@
     path: /etc/nsswitch.conf
     regexp: '\s+\[!UNAVAIL=return\]'
     replace: ""
-- name: git
-  apt:
-    name:
-      - git
-    state: present
-- name: sys helpers
-  apt:
-    name:
-      - apt-transport-https
-      - pkg-config
-      - gnupg2
-    state: present

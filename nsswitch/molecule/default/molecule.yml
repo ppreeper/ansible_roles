@@ -8,13 +8,13 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: system_u1804
+  - name: nsswitch_u1804
     image: ubuntu:18.04
-  - name: system_u2004
+  - name: nsswitch_u2004
     image: ubuntu:20.04
-  - name: system_d9
+  - name: nsswitch_d9
     image: debian:9
-  - name: system_d10
+  - name: nsswitch_d10
     image: debian:10
 provisioner:
   name: ansible
