@@ -1,0 +1,23 @@
+---
+- name: nginx config
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+    owner: "root"
+    group: "root"
+  with_items:
+    - { src: "odoo.conf", dest: "/etc/nginx/sites-available/odoo", mode: "0644" }
+- name: remove default
+  file:
+    path: "/etc/nginx/sites-enabled/default"
+    state: absent
+- name: enable config
+  file:
+    src: "/etc/nginx/sites-available/odoo"
+    dest: "/etc/nginx/sites-enabled/odoo"
+    state: link
+- name: nginx restart
+  systemd:
+    name: nginx
+    state: restarted
