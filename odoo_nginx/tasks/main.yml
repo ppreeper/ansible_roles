@@ -18,6 +18,9 @@
     dest: "/etc/nginx/sites-enabled/odoo"
     state: link
 - name: nginx restart
+  ignore_errors: yes
   systemd:
     name: nginx
+    enabled: yes
+    daemon_reload: yes
     state: restarted

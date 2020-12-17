@@ -5,8 +5,10 @@
     dest: "/lib/systemd/system/"
     mode: "0644"
 - name: enable odoo.service
+  ignore_errors: yes
   systemd:
     name: odoo
     enabled: yes
     daemon_reload: yes
-    state: started
+    status: started
+
