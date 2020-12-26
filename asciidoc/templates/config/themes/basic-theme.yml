@@ -46,7 +46,7 @@ page:
 base:
   align: justify
   font_color: #000000
-  font_family: noto-sans
+  font_family: Noto Sans
   font_size: 10
   line_height_length: round($base_font_size * 1.156)
   line_height: floor($base_line_height_length / $base_font_size)
