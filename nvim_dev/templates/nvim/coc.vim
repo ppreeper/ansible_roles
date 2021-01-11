@@ -11,7 +11,7 @@ let g:coc_global_extensions = [
     \ 'coc-yaml',
     \ 'coc-svg',
     \ 'coc-go', 
-    \ 'coc-python',
+    \ 'coc-pyright',
     \ ]
 
 " trigger auto-completion
@@ -64,7 +64,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 "nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Add F3 format current buffer.
-noremap <F3> :call CocAction('format')<CR>
+noremap <F3> :call CocAction('format')<CR>:w<CR>
 
 " Add :Snipped command to edit snippets
 command! -nargs=0 Snipped :CocCommand snippets.editSnippets
