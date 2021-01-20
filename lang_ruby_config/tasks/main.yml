@@ -1,4 +1,6 @@
 ---
+- import_role:
+    name: lang_ruby
 - name: cfg 20_ruby
   template:
     src: "cfg/20_ruby.cfg"
