@@ -46,3 +46,13 @@
       - tmux
       - screenfetch
     state: present
+
+- name: cli helpers
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - { src: "tordown", dest: "{{ home }}/bin/", mode: "0755" }

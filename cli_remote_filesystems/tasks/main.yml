@@ -15,3 +15,18 @@
       - cifs-utils
       - krb5-user
     state: present
+
+- name: cli helpers
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - { src: "smnt", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "sumnt", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "nmnt", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "numnt", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "smbmnt", dest: "{{ home }}/bin/", mode: "0755" }
+    - { src: "smbumnt", dest: "{{ home }}/bin/", mode: "0755" }

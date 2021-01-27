@@ -24,6 +24,7 @@
     owner: "{{ user }}"
     group: "{{ user }}"
   with_items:
+    - { src: "bin/dapp", dest: "{{ home }}/bin/", mode: "0755" }
     - { src: "bin/dockreset", dest: "{{ home }}/bin/", mode: "0755" }
     - { src: "bin/genregcred", dest: "{{ home }}/bin/", mode: "0755" }
     - { src: "bin/getkube", dest: "{{ home }}/bin/", mode: "0755" }
