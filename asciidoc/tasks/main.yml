@@ -17,6 +17,12 @@
     name: asciidoctor-diagram
     state: latest
     #user_install: yes
+- name: asciidoctor-html5s
+  become_user: "{{ user }}"
+  gem:
+    name: asciidoctor-html5s
+    state: latest
+    #user_install: yes
 - name: asciidoctor-rouge
   become_user: "{{ user }}"
   gem:
